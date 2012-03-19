@@ -87,7 +87,7 @@ NyanCatFormatter = Class.new(parent_class) do
     if defined? JRUBY_VERSION
       default_width = 80
     else
-      default_width = `stty size`.split.map { |x| x.to_i }.reverse.first - 1
+      default_width = `stty -g 2>/dev/null size`.split.map { |x| x.to_i }.reverse.first - 1
     end
     @terminal_width ||= default_width
   end
